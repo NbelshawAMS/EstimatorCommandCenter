@@ -10,11 +10,12 @@
   <div class="layout">
     <aside class="sidebar">
       <div class="brand">
-        <div class="brand-mark">ECC</div>
+        <img src="./logo.png" alt="All My Sons logo" class="brand-logo" onerror="this.style.display='none';document.querySelector('.brand-mark').style.display='grid';" />
+        <div class="brand-mark">AMS</div>
         <div>
           <div class="eyebrow">All My Sons</div>
           <h1>Estimator Command Center</h1>
-          <p>Cleaner dashboard for discounts, ROM, and appointments</p>
+          <p>Discounts, ROM, and appointment quality in one place</p>
         </div>
       </div>
 
@@ -26,9 +27,13 @@
       </nav>
 
       <section class="panel">
-        <div class="panel-title">Connection</div>
-        <p class="help">Apps Script API is hardcoded for this internal dashboard.</p>
-        <p class="help">No manual setup needed for users.</p>
+        <div class="panel-title">Display Size</div>
+        <div class="size-switch">
+          <button class="size-btn active" data-size="compact">Compact</button>
+          <button class="size-btn" data-size="standard">Standard</button>
+          <button class="size-btn" data-size="large">Large</button>
+        </div>
+        <p class="help">Change the card and table sizing for your screen.</p>
       </section>
 
       <section class="panel">
@@ -42,7 +47,7 @@
       <header class="topbar">
         <div>
           <h2 id="pageTitle">Overview</h2>
-          <p id="pageSubtitle">Snapshot of estimator performance and operational follow-up</p>
+          <p id="pageSubtitle">Snapshot of estimator performance and follow-up</p>
         </div>
         <div class="stamp" id="lastUpdated"></div>
       </header>
