@@ -1,5 +1,5 @@
 const state = {
-  apiBase: localStorage.getItem('ecc_api_base') || '',
+  apiBase: 'https://script.google.com/macros/s/AKfycbxRMGwrl4OT2etkTQI7RumgopaNCTGXsJmPu8dZS0vO9pzBZZEyiK7D8UIGQDc6-lIg/exec',
   discountRange: 'yd',
   discountEstimator: ''
 };
@@ -7,9 +7,8 @@ const state = {
 const $ = (sel) => document.querySelector(sel);
 
 document.addEventListener('DOMContentLoaded', () => {
-  $('#apiBase').value = state.apiBase;
   bindUi();
-  if (state.apiBase) loadOverview();
+  loadOverview();
 });
 
 function bindUi() {
@@ -21,14 +20,7 @@ function bindUi() {
     });
   });
 
-  $('#saveApi').addEventListener('click', () => {
-    state.apiBase = $('#apiBase').value.trim().replace(/\/$/, '');
-    localStorage.setItem('ecc_api_base', state.apiBase);
-    loadOverview();
-  });
-
   $('#createDiscountDrafts').addEventListener('click', async () => {
-    if (!state.apiBase) return alert('Paste your Apps Script web app URL first.');
     $('#draftStatus').textContent = 'Creating drafts...';
     try {
       const data = await fetchJson('sendDiscountEmails');
@@ -60,7 +52,6 @@ function switchView(view) {
 }
 
 async function fetchJson(action, params = {}) {
-  if (!state.apiBase) throw new Error('Missing API URL.');
   const url = new URL(state.apiBase);
   url.searchParams.set('action', action);
   Object.entries(params).forEach(([k, v]) => url.searchParams.set(k, v));
