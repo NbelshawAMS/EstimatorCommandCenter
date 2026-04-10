@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Estimator Command Center</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">ECC</div>
+        <div>
+          <div class="eyebrow">All My Sons</div>
+          <h1>Estimator Command Center</h1>
+          <p>Cleaner dashboard for discounts, ROM, and appointments</p>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-btn active" data-view="overview">Overview</button>
+        <button class="nav-btn" data-view="discounts">Discounts</button>
+        <button class="nav-btn" data-view="rom">High ROM</button>
+        <button class="nav-btn" data-view="appointments">Appointments</button>
+      </nav>
+
+      <section class="panel">
+        <div class="panel-title">Connection</div>
+        <label for="apiBase">Apps Script Web App URL</label>
+        <input id="apiBase" type="text" placeholder="https://script.google.com/macros/s/.../exec" />
+        <button id="saveApi" class="btn btn-primary">Save URL</button>
+        <p class="help">Paste this once after you deploy the backend.</p>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">Actions</div>
+        <button id="createDiscountDrafts" class="btn btn-secondary">Create Discount Email Drafts</button>
+        <p id="draftStatus" class="help"></p>
+      </section>
+    </aside>
+
+    <main class="content">
+      <header class="topbar">
+        <div>
+          <h2 id="pageTitle">Overview</h2>
+          <p id="pageSubtitle">Snapshot of estimator performance and operational follow-up</p>
+        </div>
+        <div class="stamp" id="lastUpdated"></div>
+      </header>
+
+      <section id="view-overview" class="view active"></section>
+      <section id="view-discounts" class="view"></section>
+      <section id="view-rom" class="view"></section>
+      <section id="view-appointments" class="view"></section>
+    </main>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>
